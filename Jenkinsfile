@@ -72,6 +72,15 @@ pipeline{
                }
             }
         }
+        stage('JFROG'){
+         when { expression {  params.action == 'create' } }
+            steps{
+               script{
+                   def JfrogCredentialsId = 'Jfrog'
+                   Jfrog(JfrogCredentialsId)
+               }
+            }
+        }
         stage('Docker Image Build'){
          when { expression {  params.action == 'create' } }
             steps{
