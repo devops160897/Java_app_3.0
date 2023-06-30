@@ -77,7 +77,7 @@ pipeline{
             steps{
                script{
                    def JfrogCredentialsId = 'Jfrog'
-                   Jfrog(JfrogCredentialsId)
+                   sh 'mvn clean package deploy'
                }
             }
         }
